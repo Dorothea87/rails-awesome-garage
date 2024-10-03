@@ -3,3 +3,13 @@
 <p><%= @car.year %></p>
 <p><%= @car.fuel %></p>
 <p><%= @car.owner.nickname %></p>
+
+<div>
+<%= simple_form_for [@car, @review] do |f| %>
+  <%= f.input :comment, lable: false, placeholder: "comment here..." %>
+  <%= f.input :rating, collection: 1..5 %>
+  <%= f.submit %>
+<% end %>
+<p><%= @car.reviews.comment%> - <%= @car.reviews.rating%></p>
+
+</div>
