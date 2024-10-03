@@ -7,16 +7,22 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
 puts "Cleaning database..."
+Review.destroy_all
+Favourite.destroy_all
 Car.destroy_all
+Owner.destroy_all
+
+puts "Creating owners..."
+owner1 = Owner.create!(nickname: "Sugar_daddy")
+owner2 = Owner.create!(nickname: "green_mom")
+owner3 = Owner.create!(nickname: "car_tuner65")
 
 puts "Creating cars..."
-polo = {brand: "Volkswagen", model: "Polo", year: "2014", fuel: "unleaded petrol"}
-mini = {brand: "MINI", model: "Cooper", year: "2024", fuel: "electric"}
-ferrari = {brand: "Ferrari", model: "Roma", year: "2020", fuel: "unleaded petrol"}
 
-[polo, mini, ferrari].each do |attributes|
-  car = Car.create!(attributes)
-  puts "Created #{car.name}"
-end
-puts "Finished!"
+Car.create!{brand: "Volkswagen", model: "Polo", year: "2014", fuel: "unleaded petrol", owner: owner3}
+Car.create!{brand: "MINI", model: "Cooper", year: "2024", fuel: "electric", owner: owner2}
+Car.create!{brand: "Ferrari", model: "Roma", year: "2020", fuel: "unleaded petrol", owner: owner1}
+
+puts "Finished! #{Owner.all.count} owners created."
