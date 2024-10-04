@@ -1,8 +1,16 @@
-<h1>Welcome to the garage</h1>
+<h1>Browse all our amazing cars</h1>
   <ul>
     <% @cars.each do |car| %>
       <li><%= car.brand %> - <%= car.model%>
-        <%= link_to "more details", car_path(car)%>
+        <%= link_to "more details", car_path(car), class: "btn btn-dark"%>
       </li>
     <% end %>
   </ul>
+
+  <div class="card-product">
+  <%= image_tag "fancy_car.jpg" %>
+  <div class="card-product-infos">
+    <h2>Product name</h2>
+    <p>Product description with <strong>relevant info</strong> only.</p>
+  </div>
+</div>

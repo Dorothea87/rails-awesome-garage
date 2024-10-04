@@ -1,25 +1,27 @@
-<h1><%= @car.brand %></h1>
-<h2><%= @car.model %></h2>
-<p><%= @car.year %></p>
-<p><%= @car.fuel %></p>
-<p><%= @car.owner.nickname %></p>
-
 <div>
-<% if @car.favourites.empty? %>
-<%= simple_form_for [@car, @favourite] do |f| %>
-  <%= f.submit "Save to my garage" %>
-<% end %>
-<% else %>
-<p>This car is in your garage!</p>
-<% end %>
+  <h1><%= @car.brand %> - <%= @car.model %></h1>
+    <p><%= @car.year %></p>
+    <p><%= @car.fuel %></p>
+    <p><%= @car.owner.nickname %></p>
+    <%= link_to 'My Garage', favourites_path, class: "btn btn-primary" %>
 </div>
 
 <div>
-<%= simple_form_for [@car, @review] do |f| %>
-  <%= f.input :comment, lable: false, placeholder: "comment here..." %>
-  <%= f.input :rating, collection: 1..5 %>
-  <%= f.submit %>
-<% end %>
+  <% if @car.favourites.empty? %>
+    <%= simple_form_for [@car, @favourite] do |f| %>
+      <%= f.submit "Save to my garage" %>
+    <% end %>
+  <% else %>
+    <p>This car is in your garage!</p>
+  <% end %>
+</div>
+
+<div>
+  <%= simple_form_for [@car, @review] do |f| %>
+    <%= f.input :comment, lable: false, placeholder: "comment here..." %>
+    <%= f.input :rating, collection: 1..5 %>
+    <%= f.submit %>
+  <% end %>
 </div>
 
 <%= @car.reviews.each do |review| %>
