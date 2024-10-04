@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "View my Garage", favourites_path, class: "nav-link" %>
+            <%= link_to "View my Garage", favourites_path, class: "nav-link", style: "color: #eeeeee"%>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

@@ -1,16 +1,25 @@
-<h1>Browse all our amazing cars</h1>
-  <ul>
-    <% @cars.each do |car| %>
-      <li><%= car.brand %> - <%= car.model%>
-        <%= link_to "more details", car_path(car), class: "btn btn-dark"%>
-      </li>
-    <% end %>
-  </ul>
+<h1 class="mx-4 my-5">Browse all our amazing cars</h1>
 
-  <div class="card-product">
-  <%= image_tag "fancy_car.jpg" %>
-  <div class="card-product-infos">
-    <h2>Product name</h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
-  </div>
+<div class="card-container">
+  <% @cars.each do |car| %>
+    <div class="card-car mx-5">
+
+      <div class="card-car-image">
+        <%= image_tag "fancy_car.jpg" %>
+            <div class="card-car-header">
+              <h4><%= car.brand %></h4>
+            </div>
+      </div>
+
+      <div class="card-car-infos">
+        <div class="card-car-infos-text">
+            <p style="font-size: 30px;"><%= car.model%><p>
+            <p style="font-size: 22px;"><%= car.year %></p>
+        </div>
+        <div class="card-car-infos-btn">
+            <%= link_to "more details", car_path(car), class: "btn btn-dark"%>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

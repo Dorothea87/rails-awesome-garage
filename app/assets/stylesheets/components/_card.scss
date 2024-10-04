@@ -1,4 +1,9 @@
-.card-product {
+.card-container {
+  display: flex;
+  margin: 15px auto;
+  flex-direction: column;
+}
+.card-car {
   overflow: hidden;
   height: 250px;
   width: 69%;
@@ -7,22 +12,34 @@
   display: flex;
   align-items: center;
   border-radius: 3px;
+  margin: 15px auto;
 }
 
-.card-product img {
+.card-car img {
   height: 100%;
-  width: 360px;
+  width: 400px;
   object-fit: cover;
 }
 
-.card-product h2 {
+.card-car-image {
+  position: relative;
+}
+
+.card-car-header {
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.card-car h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
-  color: #ffffff;
 }
 
-.card-product p {
+.card-car p {
   font-size: 12px;
   line-height: 1.4;
   opacity: 0.7;
@@ -31,6 +48,26 @@
   color: rgb(11, 4, 24);
 }
 
-.card-product .card-product-infos {
+.card-car .card-car-infos {
   padding: 16px;
+}
+
+.card-car-infos-text {
+  font-weight: 600;
+}
+
+.card-car-infos {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}
+
+.card-car-infos-btn {
+  padding: 20px;
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  color: #ffffff;
+  font-size: 24px;
 }

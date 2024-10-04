@@ -1,30 +1,47 @@
-<div>
-  <h1><%= @car.brand %> - <%= @car.model %></h1>
-    <p><%= @car.year %></p>
-    <p><%= @car.fuel %></p>
-    <p><%= @car.owner.nickname %></p>
-    <%= link_to 'My Garage', favourites_path, class: "btn btn-primary" %>
+<div class="card-container">
+    <div class="card-car mx-5">
+      <div class="card-car-image">
+        <%= image_tag "fancy_car.jpg" %>
+            <div class="card-car-header">
+              <h4 style="font-size: 30px;"><%= @car.brand %> - <%= @car.model %></h4>
+            </div>
+      </div>
+
+      <div class="card-car-infos">
+        <div class="card-car-infos-text">
+            <p style="font-size: 30px;"><%= @car.owner.nickname %></p>
+            <p style="font-size: 22px;"><%= @car.year %><p>
+            <p style="font-size: 22px;"><%= @car.fuel %></p>
+        </div>
+      </div>
+    </div>
 </div>
 
-<div>
+<div class="mx-5">
+    <%= link_to 'My Garage', favourites_path, class: "btn btn-dark" %>
+</div>
+
+<div class="mx-5 py-3">
   <% if @car.favourites.empty? %>
     <%= simple_form_for [@car, @favourite] do |f| %>
-      <%= f.submit "Save to my garage" %>
+      <%= f.submit "Save to my garage", class: "btn btn-dark" %>
     <% end %>
   <% else %>
-    <p>This car is in your garage!</p>
+    <p style="font-size: 22px;"S>This car is in your garage!</p>
   <% end %>
 </div>
 
-<div>
+<div class="mx-5 form-rating">
   <%= simple_form_for [@car, @review] do |f| %>
     <%= f.input :comment, lable: false, placeholder: "comment here..." %>
     <%= f.input :rating, collection: 1..5 %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-dark" %>
   <% end %>
 </div>
 
-<%= @car.reviews.each do |review| %>
-  <p><%= review.comment %> </p>
-  <p><%= '⭐' * review.rating %> </p>
-<% end %>
+<div class="mx-5 py-4">
+  <% @car.reviews.each do |review| %>
+    <p><%= review.comment %></p>
+    <p><%= raw('<i class="fa-regular fa-star"></i>' * review.rating) %></p>
+  <% end %>
+</div>

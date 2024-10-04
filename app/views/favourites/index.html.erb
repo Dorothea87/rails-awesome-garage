@@ -1,6 +1,25 @@
-<h1>My Garage</h1>
+<h1 class="mt-5 mx-3">My Garage</h1>
 
-<% @favourites.each do |favourite| %>
-  <p><%= favourite.car.brand %> - <%= favourite.car.model %></p>
-  <%= link_to "Take out of my garage", favourite_path(favourite), data: {turbo_method: :delete, turbo_confirm: "Do you really want to take this car out of your garage?"} %>
-<% end %>
+<div class="card-container">
+  <% @favourites.each do |favourite| %>
+    <div class="card-car mx-5">
+      <div class="card-car-image">
+        <%= image_tag "fancy_car.jpg" %>
+            <div class="card-car-header">
+              <h4 style="font-size: 30px;"><%= favourite.car.brand %> - <%= favourite.car.model %></h4>
+            </div>
+      </div>
+
+      <div class="card-car-infos">
+        <div class="card-car-infos-text">
+            <p style="font-size: 30px;"><%= favourite.car.owner.nickname %></p>
+            <p style="font-size: 22px;"><%= favourite.car.year %><p>
+            <p style="font-size: 22px;"><%= favourite.car.fuel %></p>
+        </div>
+        <div class="card-car-infos-btn">
+            <%= link_to "Take out of my garage", favourite_path(favourite), data: {turbo_method: :delete, turbo_confirm: "Do you really want to take this car out of your garage?"}, class: "btn btn-dark"%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
